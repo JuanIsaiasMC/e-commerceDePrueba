@@ -29,7 +29,7 @@ body.scroll {
 .nav {
 	padding: 20px;
 	width: 100%;
-	background-color: #6464b9;
+	background-color: #3b3b98;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -51,7 +51,7 @@ body.scroll {
 }
 
 .ul {
-	background-color: palegoldenrod;
+	background-color: #3b3b98;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -67,7 +67,10 @@ body.scroll {
 	height: 100vh;
 	left: 0;
 }
-
+.ul__li:hover {
+	color: #ffffff;
+	transition: all 0.3s ease;
+}
 .ul__li {
 	margin: 60px;
 }
@@ -112,7 +115,7 @@ body.scroll {
 
 .cart-contenedor {
 	position: fixed;
-	background-color: brown;
+	background-color: #ced6e0;
 	width: 100vw;
 	height: 0;
 	padding: 20px;
@@ -136,7 +139,7 @@ body.scroll {
 .cart-info {
 	margin: 20px 0;
 	width: 100%;
-	background-color: fuchsia;
+	background-color: #57606f;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -158,7 +161,7 @@ body.scroll {
 }
 
 .cart-unidades {
-	background-color: lightsteelblue;
+	background-color: inherit;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -172,27 +175,26 @@ body.scroll {
 }
 
 .cart-price {
-	/* background-color: orange; */
 	padding: 20px;
 }
 
 .cart-clean {
 	border-radius: 25px;
-	background-color: darkcyan;
+	background-color: #3b3b98;
 	padding: 20px;
 }
 
 /* section productos */
 
 .container {
-	background-color: rebeccapurple;
+	background-color: #ced6e0;
 	padding: 20px;
 }
 
 .div-info {
 	margin: 2rem auto;
 	width: 70%;
-	background-color: aqua;
+	background-color: #57606f;
 }
 
 .div__img {
@@ -207,11 +209,10 @@ body.scroll {
 }
 
 .div__h3 {
-	background-color: beige;
 }
 .div__button {
-	color: white;
-	background-color: rgb(34, 34, 72);
+	color: #ffffff;
+	background-color: #3b3b98;
 	border: none;
 	align-self: center;
 	width: fit-content;
@@ -227,7 +228,7 @@ body.scroll {
 /* FOOTER */
 
 .footer {
-	background-color: beige;
+	background-color: #3b3b98;
 	text-align: center;
 }
 
@@ -250,7 +251,7 @@ body.scroll {
 
 @media screen and (min-width: 455px) {
 	body {
-		background-color: aqua;
+		background-color: #ffffff;
 	}
 
 	.container {
@@ -264,6 +265,6 @@ body.scroll {
 	.div-info {
 		margin: 1rem auto;
 		width: 70%;
-		background-color: aqua;
+		background-color: #57606f;
 	}
 }
