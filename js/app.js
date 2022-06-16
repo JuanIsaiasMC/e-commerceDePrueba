@@ -201,22 +201,22 @@ const agregarAlCarrito = (prodId) => {
 	}
 
 	actualizarCarrito();
-	precioCart();
+	// precioCart();
 };
 
-const precioCart = () => {
-	cart.forEach((item) => {
-		let precioItem = document.querySelector('.cart-p');
-		let precioNumber = Number(precioItem.textContent.replace('$', ''));
-		console.log(precioNumber);
-		let cantidad = document.querySelector('.cantidad');
-		let cantidadNumber = Number(cantidad.textContent);
-		console.log(cantidadNumber);
-		precioItem.textContent = item.price * item.cantidad;
-	});
-};
+// const precioCart = () => {
+// 	cart.forEach((item) => {
+// 		let precioItem = document.querySelector('.cart-p');
+// 		let precioNumber = Number(precioItem.textContent.replace('$', ''));
+// 		console.log(precioNumber);
+// 		let cantidad = document.querySelector('.cantidad');
+// 		let cantidadNumber = Number(cantidad.textContent);
+// 		console.log(cantidadNumber);
+// 		precioItem.textContent = item.price * item.cantidad;
+// 	});
+// };
 
-function precioPorArticulo() {}
+function precioPorArticulo() { }
 
 const deleteItem = (itemId) => {
 	const item = cart.find((elemento) => elemento.id === itemId);
