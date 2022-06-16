@@ -88,22 +88,22 @@ const cartProducts = document.querySelector('.cart-items');
 const deleteCart = document.querySelector('.cart-clean');
 const cartCount = document.querySelector('.cart-span');
 const totalPrice = document.querySelector('.cart-totalPrice');
-const precioPorItem = document.querySelector('.cart-p');
+const precioRepetido = document.querySelector(".cart-p")
 
 let cart = [];
+document.addEventListener('DOMContentLoaded', () => {
+
+	if (localStorage.getItem('cart')) {
+		cart = JSON.parse(localStorage.getItem('cart'));
+		actualizarCarrito();
+	}
+});
 
 deleteCart.addEventListener('click', () => {
 	cart.length = 0;
 	actualizarCarrito();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-	// mostrarProductos();
-	if (localStorage.getItem('cart')) {
-		cart = JSON.parse(localStorage.getItem('cart'));
-		actualizarCarrito();
-	}
-});
 
 navToogle.addEventListener('click', () => {
 	navMenu.classList.toggle('active');
@@ -132,39 +132,8 @@ cartClose.addEventListener('click', () => {
 	disable.classList.remove('scroll');
 });
 
-// function mostrarProductos() {
-// 	let fragmento = '';
 
-// 	items.map((elemento) => {
-// 		fragmento += `
-//   <div class="div-info">
-//   <img src=${elemento.image} alt="item" class="div__img" />
-//   <div class="div-product">
-//   <h3 class="div__h3">${elemento.name}</h3>
-//   <p>$${elemento.price}.00</p>
-//   <button id="agregar${elemento.id}" class="div__button">Agregar</button>
-//   <p class="div__p">Existencias: <span class="div__span">${elemento.quantity}</span></p>
-//   </div>
-//   </div>
-//   `;
-// 	});
 
-// 	listaProductos.innerHTML = fragmento;
-
-// let btnAddCart = document.querySelectorAll('.div__button');
-
-// btnAddCart.forEach((boton) => {
-// 	boton.addEventListener('click', (e) => {
-// 		let id = parseInt(boton.getAttribute('data-id'));
-// 		let product = items.find((item) => {
-// 			return item.id === id;
-// 		});
-// 		cart.push(product);
-// 		actualizarCarrito();
-// 		console.log(cart);
-// 	});
-// });
-// }
 
 items.forEach((elemento) => {
 	const div = document.createElement('div');
@@ -201,22 +170,9 @@ const agregarAlCarrito = (prodId) => {
 	}
 
 	actualizarCarrito();
-	// precioCart();
+
 };
 
-// const precioCart = () => {
-// 	cart.forEach((item) => {
-// 		let precioItem = document.querySelector('.cart-p');
-// 		let precioNumber = Number(precioItem.textContent.replace('$', ''));
-// 		console.log(precioNumber);
-// 		let cantidad = document.querySelector('.cantidad');
-// 		let cantidadNumber = Number(cantidad.textContent);
-// 		console.log(cantidadNumber);
-// 		precioItem.textContent = item.price * item.cantidad;
-// 	});
-// };
-
-function precioPorArticulo() { }
 
 const deleteItem = (itemId) => {
 	const item = cart.find((elemento) => elemento.id === itemId);
@@ -227,25 +183,38 @@ const deleteItem = (itemId) => {
 
 const actualizarCarrito = () => {
 	cartProducts.innerHTML = '';
+	let suma = 0
+	// let cantidadTotal = 0
+
 
 	cart.forEach((item) => {
 		const div = document.createElement('div');
 		div.classList.add('cart-info');
 		div.innerHTML = `
-    <img src=${item.image} alt="" class="cart-img" />
+    			<img src=${item.image} alt="" class="cart-img" />
 				<h3 class="cart-h3">${item.name}</h3>
 				<div class="cart-unidades">
 					<h2 class="cantidad">${item.cantidad}</h2>
 				</div>
-				<p class="cart-p">$${item.price}.00</p>
+				<p class="cart-p">$${item.price}</p>
 				<button onclick="deleteItem(${item.id})" class="buttonDelete">
 					<i class="bx bx-trash"></i>
 				</button>
     
     `;
+		let totalProducto = item.cantidad * item.price
+		suma += totalProducto
+
+
 		cartProducts.appendChild(div);
 		localStorage.setItem('cart', JSON.stringify(cart));
 	});
 	cartCount.textContent = cart.length;
-	totalPrice.textContent = cart.reduce((acumulador, item) => acumulador + item.price, 0);
+
+	totalPrice.textContent = `$${suma}`
+
+
 };
+
+
+
